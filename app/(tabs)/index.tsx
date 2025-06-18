@@ -61,15 +61,23 @@ export default function HomeScreen() {
       <TextInput
         style={styles.search}
         placeholder="Buscar receita"
+        placeholderTextColor="#E7A5A5"
         value={search}
         onChangeText={setSearch}
       />
 
       <TouchableOpacity
+        style={styles.favButton}
+        onPress={() => router.push('/receitas/favoritos')}
+      >
+        <Text style={styles.addButtonText}>Favoritos</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
         style={styles.addButton}
         onPress={() => router.push('/receitas/nova')}
       >
-        <Text style={styles.addButtonText}>+ Nova Receita</Text>
+        <Text style={styles.addButtonText}>Nova Receita</Text>
       </TouchableOpacity>
 
       {filteredRecipes.length === 0 ? (
@@ -89,30 +97,37 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: '#FFF1F3', 
+    backgroundColor: '#FFF1F3',
   },
   search: {
     borderWidth: 1,
-    borderColor: '#E7A5A5', 
+    borderColor: '#E7A5A5',
     borderRadius: 8,
     padding: 8,
     marginBottom: 12,
-    backgroundColor: '#FFF8F9', 
+    backgroundColor: '#FFF8F9',
   },
   addButton: {
-    backgroundColor: '#D9849F', 
+    backgroundColor: '#D9849F',
     padding: 12,
     borderRadius: 8,
-    marginBottom: 16,
+    marginBottom: 12,
+    alignItems: 'center',
+  },
+  favButton: {
+    backgroundColor: '#EFA7A7',
+    padding: 12,
+    borderRadius: 8,
+    marginBottom: 12,
     alignItems: 'center',
   },
   addButtonText: {
-    color: '#FFF0F5', 
+    color: '#FFF0F5',
     fontSize: 16,
     fontWeight: 'bold',
   },
   card: {
-    backgroundColor: '#FFE5EC', 
+    backgroundColor: '#FFE5EC',
     padding: 12,
     borderRadius: 8,
     marginBottom: 12,
@@ -126,17 +141,17 @@ const styles = StyleSheet.create({
     height: 60,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#E7A5A5', 
+    borderColor: '#E7A5A5',
   },
   title: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#872341', 
+    color: '#872341',
   },
   emptyText: {
     textAlign: 'center',
     marginTop: 20,
     fontSize: 16,
-    color: '#B67A86', 
+    color: '#B67A86',
   },
 });

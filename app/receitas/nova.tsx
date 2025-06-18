@@ -68,6 +68,7 @@ export default function NovaReceita() {
       <TextInput
         style={styles.input}
         placeholder="Nome da receita"
+        placeholderTextColor={"#E7A5A5"}
         value={nome}
         onChangeText={setNome}
       />
@@ -75,6 +76,7 @@ export default function NovaReceita() {
       <TextInput
         style={styles.input}
         placeholder="Ingredientes"
+        placeholderTextColor={"#E7A5A5"}
         value={ingredientes}
         onChangeText={setIngredientes}
         multiline
@@ -83,6 +85,7 @@ export default function NovaReceita() {
       <TextInput
         style={styles.input}
         placeholder="Modo de preparo"
+        placeholderTextColor={"#E7A5A5"}
         value={preparo}
         onChangeText={setPreparo}
         multiline
@@ -107,19 +110,19 @@ export default function NovaReceita() {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: '#FFF1F3', // rosa bem claro
+    backgroundColor: '#FFF1F3', 
     flexGrow: 1,
   },
   title: {
     fontSize: 24,
     marginBottom: 16,
     fontWeight: 'bold',
-    color: '#843B4D', // vinho rosé
+    color: '#843B4D', 
     textAlign: 'center',
   },
   input: {
     borderWidth: 1,
-    borderColor: '#F4C2C2', // rosado suave
+    borderColor: '#F4C2C2', 
     backgroundColor: '#FFF8F9',
     borderRadius: 8,
     padding: 12,
@@ -134,7 +137,7 @@ const styles = StyleSheet.create({
     marginVertical: 14,
   },
   imageButton: {
-    backgroundColor: '#EFA7A7', // rosa claro saturado
+    backgroundColor: '#EFA7A7', 
     padding: 12,
     borderRadius: 8,
     alignItems: 'center',
@@ -146,7 +149,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   saveButton: {
-    backgroundColor: '#B35C79', // rosé escuro
+    backgroundColor: '#B35C79',
     padding: 14,
     borderRadius: 10,
     alignItems: 'center',

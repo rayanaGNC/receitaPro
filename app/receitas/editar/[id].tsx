@@ -94,6 +94,7 @@ export default function EditarReceita() {
       <TextInput
         style={styles.input}
         placeholder="Nome da receita"
+        placeholderTextColor={"#E7A5A5"}
         value={nome}
         onChangeText={setNome}
       />
@@ -101,6 +102,7 @@ export default function EditarReceita() {
       <TextInput
         style={styles.input}
         placeholder="Ingredientes"
+        placeholderTextColor={"#E7A5A5"}
         value={ingredientes}
         onChangeText={setIngredientes}
         multiline
@@ -109,6 +111,7 @@ export default function EditarReceita() {
       <TextInput
         style={styles.input}
         placeholder="Modo de preparo"
+        placeholderTextColor={"#E7A5A5"}
         value={preparo}
         onChangeText={setPreparo}
         multiline

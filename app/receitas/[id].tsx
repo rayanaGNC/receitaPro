@@ -10,12 +10,15 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { getRecipeById } from '../services/recipes';
+import { toggleFavoriteRecipe, getFavoriteRecipes } from '../services/favorites';
 import { Recipe } from '../types/recipe';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function DetalhesReceita() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [loading, setLoading] = useState(true);
+  const [favorito, setFavorito] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -25,10 +28,22 @@ export default function DetalhesReceita() {
       const data = await getRecipeById(id);
       setRecipe(data);
       setLoading(false);
+
+      const favs = await getFavoriteRecipes();
+      const existe = favs.find(
+        r => r.nome === data?.nome && r.preparo === data?.preparo
+      );
+      setFavorito(!!existe);
     };
 
     fetch();
   }, [id]);
+
+  const handleFavoritar = async () => {
+    if (!recipe) return;
+    const novo = await toggleFavoriteRecipe(recipe);
+    setFavorito(novo);
+  };
 
   if (loading) {
     return <ActivityIndicator size="large" style={{ flex: 1 }} />;
@@ -44,7 +59,16 @@ export default function DetalhesReceita() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>{recipe.nome}</Text>
+      <View style={styles.header}>
+        <Text style={styles.title}>{recipe.nome}</Text>
+        <TouchableOpacity onPress={handleFavoritar} style={styles.favoriteButton}>
+          <Ionicons
+            name={favorito ? 'heart' : 'heart-outline'}
+            size={28}
+            color="#D9849F"
+          />
+        </TouchableOpacity>
+      </View>
 
       {recipe.imagem && (
         <Image source={{ uri: recipe.imagem }} style={styles.image} />
@@ -70,15 +94,23 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     flexGrow: 1,
-    backgroundColor: '#FFF1F3', 
+    backgroundColor: '#FFF1F3',
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 18,
   },
   title: {
     fontSize: 26,
     fontWeight: '600',
-    marginBottom: 18,
-    textAlign: 'center',
-    color: '#872341', 
+    color: '#872341',
     fontFamily: 'PlayfairDisplay_700Bold',
+    flex: 1,
+  },
+  favoriteButton: {
+    marginLeft: 12,
   },
   image: {
     width: '100%',
@@ -106,11 +138,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 40,
     fontSize: 18,
-    color: '#D62828', 
+    color: '#D62828',
     fontFamily: 'sans-serif',
   },
   editButton: {
-    backgroundColor: '#D9849F', 
+    backgroundColor: '#D9849F',
     padding: 14,
     borderRadius: 10,
     marginTop: 28,
@@ -128,4 +160,3 @@ const styles = StyleSheet.create({
     fontFamily: 'sans-serif',
   },
 });
-
