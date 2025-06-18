@@ -1,0 +1,36 @@
+{
+  "name": "easycook",
+  "version": "1.0.0",
+  "main": "node_modules/expo-router/entry",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@expo-google-fonts/playfair-display": "^0.4.1",
+    "expo": "~53.0.9",
+    "expo-app-loading": "^2.1.1",
+    "expo-file-system": "~18.1.10",
+    "expo-font": "~13.3.1",
+    "expo-image-picker": "~16.1.4",
+    "expo-router": "~5.0.7",
+    "expo-status-bar": "~2.2.3",
+    "firebase": "^11.8.1",
+    "react": "19.0.0",
+    "react-native": "0.79.2",
+    "react-native-get-random-values": "~1.11.0",
+    "react-native-safe-area-context": "5.4.0",
+    "react-native-screens": "~4.11.1",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@types/react": "~19.0.10",
+    "@types/uuid": "^10.0.0",
+    "babel-plugin-module-resolver": "^5.0.2",
+    "typescript": "~5.8.3"
+  },
+  "private": true
+}
