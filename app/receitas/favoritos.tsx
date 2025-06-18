@@ -21,6 +21,7 @@ export default function Favoritos() {
     const carregarFavoritos = async () => {
       try {
         const receitas = await getFavoriteRecipes();
+        console.log('🔍 Receitas favoritas carregadas:', receitas);
         setFavoritos(receitas);
       } catch (error) {
         console.error('Erro ao carregar favoritos:', error);

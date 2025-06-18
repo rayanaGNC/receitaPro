@@ -137,8 +137,8 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   image: {
-    width: 60,
-    height: 60,
+    width: 100,
+    height: 100,
     borderRadius: 8,
     borderWidth: 1,
     borderColor: '#E7A5A5',
